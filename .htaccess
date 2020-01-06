@@ -1,6 +1,4 @@
 RewriteEngine on
-RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond $1 !^(images|photos|css|js|robots\.txt)
 RewriteRule ^(.*)$ /php-mvc/index.php [L,QSA]

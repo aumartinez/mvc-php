@@ -13,12 +13,10 @@ spl_autoload_register(function ($className) {
   }
   else if (file_exists(ROOT . DS . "models" . DS . strtolower($className) . ".php")) {
     require_once (ROOT . DS . "models" . DS . strtolower($className) . ".php");
-  }
-  else if (file_exists(ROOT . DS . "models" . DS . "sql.php")) {
-    require_once (ROOT . DS . "models" . DS . "sql.php");
-  }
+  }  
 });
 
 //Route request
-Router::route($url);
+$router = new Router();
+$router->route($url);
 ?>

@@ -9,9 +9,10 @@ define ("DBPASS", "");
 define ("DBHOST", "localhost");
 
 //Website URL and PATH
-define ("PATH", "//mvc-php/");
+define ("PATH", "mvc-php");
 define ("WEBSITE_TITLE", "Web app");
 
-//Default controller
+//Default states
 define ("DEFAULT_CONTROLLER", "home");
+define ("DEFAULT_METHOD", "index");
 ?>

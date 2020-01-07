@@ -1,8 +1,8 @@
 <?php
 
 class Router {
-  protected $default_controller = "page";
-  protected $default_method = "index";
+  protected $default_controller = DEFAULT_CONTROLLER;
+  protected $default_method = DEFAULT_METHOD;
   protected $params = [];
 
   public function route($url) {

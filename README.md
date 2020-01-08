@@ -12,3 +12,22 @@ Usually represents the database logic, or the behind the scenes processes used t
 ## The Controller
 
 Represents the application logic and define the relationship between the model or models and the views. The controller will also route the user requests appropriately, either to the model or view accordingly.
+
+## Directory structure
+
+A proposed directory structure for a given project could be as below,
+
+ROOT sub-folder (mvc-php) for this example:
+
+- mvc php
+  - app
+    - config
+    - controllers
+    - core
+    - models
+    - views
+  - common
+    - css
+    - html
+    - img
+    - js

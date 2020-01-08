@@ -33,3 +33,24 @@ ROOT sub-folder (mvc-php) for this example:
     - js
 
 ![Screenshot](/screenshots/screenshot-00.PNG)
+
+## Initial preparations
+
+For each folder, a blank index.html file will help to minimize undesired indexing access to them.
+
+```html
+
+
+<!doctype html>
+<html>
+  <head>
+    <title>403 Forbidden</title>
+  </head>
+  <body>
+    <h1>
+      Directory access is forbidden.
+    </h1>
+  </body>
+</html>
+
+```

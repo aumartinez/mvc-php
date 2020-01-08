@@ -74,6 +74,8 @@ RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
 
 ```
 
+This .htaccess file will be located in the ROOT_site > mvc-php folder.
+
 ## MVC core
 
 The index.php file will then call for the core classes and methods that will handle the request.

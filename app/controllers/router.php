@@ -13,11 +13,9 @@ class Router {
       while($url_array[0] != PATH) {
         array_shift($url_array);
       }
-    }
-    if ($url_array[0] == PATH) {
       array_shift($url_array);
     }
-    
+        
     $controller = isset($url_array[0]) ? array_shift($url_array) : "";    
     $method = isset($url_array[0]) ? array_shift($url_array) : "";
     $params = isset($url_array[0]) ? array_shift($url_array) : "";

@@ -146,7 +146,7 @@ What does this file do?
 
 ### The config.php file
 
-This file will be located in the config folder and will contain all the global constants and any Database credentials that will be used throughout the application.
+This file will be located in the config folder and will contain all the global constants and any database credentials that will be used throughout the application.
 
 ```php
 
@@ -169,6 +169,8 @@ define ("DEFAULT_METHOD", "index");
 ?>
 
 ```
+
+Notice the DBNAME global, this means a database with the name "webapp" should be setup prior to try running a db query.
 
 ### The functions.php file
 

@@ -56,3 +56,18 @@ For each folder, a blank index.html file will help to minimize undesired indexin
 </html>
 
 ```
+
+### URL redirecting
+
+Our approach will have all users requests sent to a single PHP file which will then route the request to the appropriate resource. Then a sort of redirect or URL rewriting method should be used.
+
+For webservers running apache, this can be achieved with the help of an .htaccess file
+
+```apache
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
+
+### "mvc-php" can be either removed or replaced by a folder of your choide

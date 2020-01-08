@@ -4,7 +4,7 @@ class Application {
   
   function __construct() {
     $this->set_reporting();
-    $this->remove_magic_quotes();
+    $this->stripall_slashes();
     $this->unregister_globals();
   }
   

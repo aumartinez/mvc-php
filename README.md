@@ -139,8 +139,6 @@ $router->route($url);
 
 What does this file do?  
 
-What does this file do?  
-
 1. Call for a global configuration file (config.php)
 2. Load any global helper functions (functions.php)
 3. Set up a class autoloader function, following to the logic, for any new class or component, these will be divided into php chunks or separated files that should be placed in their corresponding folders, new controllers should go to ROOT_site > mvc-php > app > controllers, and so on with new models, and views.

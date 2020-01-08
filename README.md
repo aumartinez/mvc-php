@@ -70,6 +70,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
 
-### "mvc-php" can be either removed or replaced by a folder of your choide
+### "mvc-php" can be either removed or replaced by a folder of your choice
 
 ```

@@ -142,3 +142,29 @@ What does this file do?
 2. Load any global helper functions (functions.php)
 3. Set up a class autoloader function, following to the logic, for any new class or component, these will be divided into php chunks or separated files that should be placed in their corresponding folders, new controllers should go to ROOT_site > mvc-php > app > controllers, and so on with new models, and views.
 4. Route the request from a Router class, if you can foresee the modulation logic, a file called "router" should be created and stored in the ROOT_site > mvc-php > app > core folder. The file of course will include the "Routher" class to be instantiated here.
+
+### The config.php file
+
+This file will be located in the config folder and will contain all the global constants and any Database credentials that will be used throughout the application.
+
+```php
+
+<?php
+
+# Database link
+define ("DBNAME", "webapp");
+define ("DBUSER", "root");
+define ("DBPASS", "");
+define ("DBHOST", "localhost");
+
+# PATH to app
+define ("PATH", "mvc-php");
+define ("WEB_TITLE", "Web app");
+
+# Default states
+define ("DEFAULT_CONTROLLER", "home");
+define ("DEFAULT_METHOD", "index");
+
+?>
+
+```

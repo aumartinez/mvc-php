@@ -84,6 +84,7 @@ The index.php file will look like the below:
 
 <?php
 
+# Use DIRECTORY_SEPARATOR for multiplatform compatibility
 define("DS", DIRECTORY_SEPARATOR);
 # Path to app folder
 define("ROOT", dirname(__FILE__) . DS . "app");

@@ -31,3 +31,5 @@ ROOT sub-folder (mvc-php) for this example:
     - html
     - img
     - js
+
+![Screenshot](/screenshots/screenshot-00.PNG)

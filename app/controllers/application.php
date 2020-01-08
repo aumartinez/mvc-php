@@ -27,12 +27,10 @@ class Application {
     return $value;
   }
   
-  private function remove_magic_quotes() {
-    if (get_magic_quotes_gpc()) {
+  private function stripall_slashes() {
       $_GET = $this->stripslashes_deep($_GET);
       $_POST = $this->stripslashes_deep($_POST);
-      $_COOKIE = $this->stripslashes_deep($_COOKIE);
-    }
+      $_COOKIE = $this->stripslashes_deep($_COOKIE);    
   }
   
   private function unregister_globals() {

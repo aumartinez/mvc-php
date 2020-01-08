@@ -136,6 +136,7 @@ $router->route($url);
 ?>
 
 ```
+
 What does this file do?  
 
 1. Call for a global configuration file (config.php)
@@ -164,6 +165,20 @@ define ("WEB_TITLE", "Web app");
 # Default states
 define ("DEFAULT_CONTROLLER", "home");
 define ("DEFAULT_METHOD", "index");
+
+?>
+
+```
+
+### The functions.php file
+
+Errr, this one will be placed in the core folder and will be left empty for now.
+
+```php
+
+<?php
+
+# Helper functions here
 
 ?>
 

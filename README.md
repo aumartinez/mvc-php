@@ -74,11 +74,11 @@ RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
 
 ```
 
-### MVC core
+## MVC core
 
 The index.php file will then call for the core classes and methods that will handle the request.
 
-The index.php file will look like the below:
+The index.php file in the "mvc-php" folder will look like the below:
 
 ```php
 

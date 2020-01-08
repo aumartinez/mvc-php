@@ -36,6 +36,8 @@ ROOT sub-folder (mvc-php) for this example:
 
 ## Initial preparations
 
+### Blank index files
+
 For each folder, a blank index.html file will help to minimize undesired indexing access to them.
 
 ```html

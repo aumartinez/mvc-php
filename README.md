@@ -73,3 +73,28 @@ RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
 ### "mvc-php" can be either removed or replaced by a folder of your choice
 
 ```
+
+### MVC core
+
+The index.php file will then call for the core classes and methods that will handle the request.
+
+The index.php file will look like the below:
+
+```php
+
+<?php
+
+define("DS", DIRECTORY_SEPARATOR);
+# Path to app folder
+define("ROOT", dirname(__FILE__) . DS . "app");
+
+# Get URL request from server
+$url = $_SERVER["REQUEST_URI"];
+
+# Call the request handler
+require_once(ROOT . DS . "core" . DS . "core.php");
+
+?>
+
+```
+

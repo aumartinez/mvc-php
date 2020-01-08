@@ -136,3 +136,10 @@ $router->route($url);
 ?>
 
 ```
+
+What does this file do?  
+
+1- Call for a global configuration file (config.php)
+2- Load any global helper functions (functions.php)
+3- Set up a class autoloader function, following to the logic, for any new class or component, these will be divided into php chunks or separated files that should be placed in their corresponding folders, new controllers should go to ROOT_site > mvc-php > app > controllers, and so on with new models, and views.
+4- Route the request from a Router class, if can foresee the modulation logic, a file called "router" should be created and stored in the ROOT_site > mvc-php > app > core folder. The file of course will include the "Routher" class to be instantiated here.

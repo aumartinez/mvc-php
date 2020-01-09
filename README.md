@@ -308,4 +308,4 @@ class Application {
 
 ```
 
-If you are curious about what this does, mostly it is to prevent MySQL injection through user input data.
+If you are curious about what this does, mostly it is to prevent MySQL injection through user input data. Of course additional method should be added to any user input, but not as a global class/method, but upon demand on runtime, in plain English, use sanitize methods, only when you will need to clear any user input. Rule of thumb, ALWAYS sanitize any user input.

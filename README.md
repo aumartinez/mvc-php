@@ -194,7 +194,7 @@ Errr, this one will be placed in the core folder and will be left empty for now.
 
 ### The router
 
-All HTTP requests should be routed to the corresponding controller, the request will be then divided in the following format http://www.mysite.com/mvc-php/home/welcome, ["www.mysite.com", "mvc-php", "home", "welcome"], our proposed framework, the first 2 ones will be skipped/ignored and will extract only "home" and "welcome", this means the router will call for a controller named "home" that will execute a method named "welcome".
+All HTTP requests should be routed to the corresponding controller, the request will be then divided in the following format the url: http://www.mysite.com/mvc-php/home/welcome, converted to an array -> ["www.mysite.com", "mvc-php", "home", "welcome"], in the proposed framework logic, the first 2 ones will be skipped/ignored and will extract only "home" and "welcome", this means the router will call for a controller named "home" that will execute a method named "welcome".
 
 ```php
 

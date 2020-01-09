@@ -166,7 +166,7 @@ define ("WEB_TITLE", "Web app");
 define ("CSS", ROOT . DS . "common" . DS . "css");
 define ("IMG", ROOT . DS . "common" . DS . "img");
 define ("HTML", ROOT . DS . "common" . DS . "html");
-define ("JS", ROOT . DS . "common" . DS . "JS");
+define ("JS", ROOT . DS . "common" . DS . "js");
 
 # Default states
 define ("DEFAULT_CONTROLLER", "home");

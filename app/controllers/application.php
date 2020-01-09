@@ -3,36 +3,25 @@
 class Application {
   
   function __construct() {
-    $this->set_reporting();
-    $this->stripall_slashes();
+    $this->sanitize_data();
     $this->unregister_globals();
-  }
+  }  
   
-  private function set_reporting() {
-    if (DEVELOPMENT_ENVIRONMENT == true) {
-      error_reporting(E_ALL);
-      ini_set ("display_errors", "on");
-    }
-    else {
-      error_reporting(E_ALL);
-      ini_set("display_errors", "off");
-      ini_set("log_errors", "on");
-      ini_set("error_log", ROOT . DS . "tmp" . DS . "logs" . "error.log");
-    }
-  }
-  
-  private function stripslashes_deep($value) {
-    $value = is_array($value) ? array_map(array($this, "stripslashes_deep"), $value) : stripslashes($value);
+  # Remove slashes from a given string
+  private function stripslashes_deep($value) {    
+    $value = is_array($value) ? array_map("stripslashes_deep", $value) : stripslashes($value);
     
     return $value;
   }
   
-  private function stripall_slashes() {
-      $_GET = $this->stripslashes_deep($_GET);
-      $_POST = $this->stripslashes_deep($_POST);
-      $_COOKIE = $this->stripslashes_deep($_COOKIE);    
+  # Remove slashes from input data from GET, POST and COOKIE
+  private function sanitize_data() {
+    $_GET = $this->stripslashes_deep($_GET);
+    $_POST = $this->stripslashes_deep($_POST);
+    $_COOKIE = $this->stripslashes_deep($_COOKIE);
   }
   
+  # If set, unregister any global constant
   private function unregister_globals() {
     if (ini_get("register_globals")) {
       $array = array("_SESSION", "_POST", "_GET", "_REQUEST", "_SERVER", "_ENV", "_FILES");

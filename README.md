@@ -141,8 +141,8 @@ What does this file do?
 
 1. Call for a global configuration file (config.php)
 2. Load any global helper functions (functions.php)
-3. Set up a class autoloader function, following to the logic, for any new class or component, these will be divided into php chunks or separated files that should be placed in their corresponding folders, new controllers should go to ROOT_site > mvc-php > app > controllers, and so on with new models, and views.
-4. Route the request from a Router class, if you can foresee the modulation logic, a file called "router" should be created and stored in the ROOT_site > mvc-php > app > core folder. The file of course will include the "Router" class to be instantiated here.
+3. Set up a class autoloader function, following the logic, that for any new class or component, these will be divided into php chunks or separated files that should be placed in their corresponding folders, new controllers should go to ROOT_site > mvc-php > app > controllers, and so on with new models, and views.
+4. Route the request from a Router class, if you can foresee the modulation logic, a file called "router.php" with the "router class" should be created and stored in the ROOT_site > mvc-php > app > core folder. The file of course will include the "Router" class to be instantiated here.
 
 ### The config.php file
 
@@ -161,6 +161,12 @@ define ("DBHOST", "localhost");
 # PATH to app
 define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
+
+# PATH to media files
+defile ("CSS", ROOT . DS . "common" . DS . "css");
+defile ("IMG", ROOT . DS . "common" . DS . "img");
+defile ("HTML", ROOT . DS . "common" . DS . "html");
+defile ("JS", ROOT . DS . "common" . DS . "JS");
 
 # Default states
 define ("DEFAULT_CONTROLLER", "home");
@@ -181,6 +187,70 @@ Errr, this one will be placed in the core folder and will be left empty for now.
 <?php
 
 # Helper functions here
+
+?>
+
+```
+
+### The router
+
+All HTTP requests should be routed to the corresponding controller, the request will be then divided in the following format http://www.mysite.com/mvc-php/home/welcome, ["www.mysite.com", "mvc-php", "home", "welcome"], our proposed framework, the first 2 ones will be skipped/ignored and will extract only "home" and "welcome", this means the router will call for a controller named "home" that will execute a method named "welcome".
+
+```php
+
+<?php
+
+class Router {
+  
+  # Initial states
+  protected $default_controller = DEFAULT_CONTROLLER;
+  protected $default_method = DEFAULT_METHOD;
+  protected $params = [];
+
+  # Route handler method
+  public function route($url) {
+    
+    # Split url using "/" as separator
+    $url_array = array();
+    $url_array = explode("/", $url);
+    
+    # Remove domain and app folder from url
+    if (in_array(PATH, $url_array)) {
+      while($url_array[0] != PATH) {
+        array_shift($url_array);
+      }
+      array_shift($url_array);
+    }
+    
+    # If any, pass the corresponding controller, method and parameters
+    $controller = isset($url_array[0]) ? array_shift($url_array) : "";    
+    $method = isset($url_array[0]) ? array_shift($url_array) : "";
+    $params = isset($url_array[0]) ? array_shift($url_array) : "";
+    
+    if (empty($controller)) {
+      $controller = $this->default_controller;
+    }
+    
+    if (empty($method)) {
+      $method = $this->default_method;
+    }
+    
+    $params = $url_array;
+    
+    # Instantiate controller class and call to appropriate method
+    $controller_name = $controller;
+    $controller = ucfirst($controller);
+    $dispatch = new $controller($controller_name, $method);
+    
+    if (method_exists($controller, $method)) {
+      call_user_func_array(array($dispatch, $method), $params);
+    }
+    else {
+      /* Error message */
+    }
+    
+  } 
+}
 
 ?>
 

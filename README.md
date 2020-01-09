@@ -163,10 +163,10 @@ define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
 
 # PATH to media files
-defile ("CSS", ROOT . DS . "common" . DS . "css");
-defile ("IMG", ROOT . DS . "common" . DS . "img");
-defile ("HTML", ROOT . DS . "common" . DS . "html");
-defile ("JS", ROOT . DS . "common" . DS . "JS");
+define ("CSS", ROOT . DS . "common" . DS . "css");
+define ("IMG", ROOT . DS . "common" . DS . "img");
+define ("HTML", ROOT . DS . "common" . DS . "html");
+define ("JS", ROOT . DS . "common" . DS . "JS");
 
 # Default states
 define ("DEFAULT_CONTROLLER", "home");

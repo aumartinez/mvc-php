@@ -255,3 +255,57 @@ class Router {
 ?>
 
 ```
+
+### The controllers
+
+Since controllers will be called upon the HTTP request and will define the relationship between the model and the view, these would be the next to code. Since there are some security concerns when an application is built using PHP and MySQL (or any database connection), some actions need to be taken to minimize undesired hacks.
+
+A first action will be to create a general class that will execute some sanitize methods, as below, this will be the core controller class that will inherit a few security measures.
+
+```php
+
+<?php
+
+class Application {
+  
+  function __construct() {
+    $this->sanitize_data();
+    $this->unregister_globals();
+  }  
+  
+  # Remove slashes from a given string
+  private function stripslashes_deep($value) {    
+    $value = is_array($value) ? array_map("stripslashes_deep", $value) : stripslashes($value);
+    
+    return $value;
+  }
+  
+  # Remove slashes from input data from GET, POST and COOKIE
+  private function sanitize_data() {
+    $_GET = $this->stripslashes_deep($_GET);
+    $_POST = $this->stripslashes_deep($_POST);
+    $_COOKIE = $this->stripslashes_deep($_COOKIE);
+  }
+  
+  # If set, unregister any global constant
+  private function unregister_globals() {
+    if (ini_get("register_globals")) {
+      $array = array("_SESSION", "_POST", "_GET", "_REQUEST", "_SERVER", "_ENV", "_FILES");
+      
+      foreach ($array as $value) {
+        foreach ($GLOBALS[$value] as $key => $var) {
+          if ($var === $GLOBALS[$key]) {
+            unset($GLOBALS[$key]);
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+?>
+
+```
+
+If you are curious about what this does, mostly it is to prevent MySQL injection through user input data.

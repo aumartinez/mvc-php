@@ -268,14 +268,14 @@ A first action will be to create a general class that will execute some sanitize
 
 class Application {
   
-  public function __construct() {
+  function __construct() {
     $this->sanitize_data();
     $this->unregister_globals();
   }  
   
   # Remove slashes from a given string
   private function stripslashes_deep($value) {    
-    $value = is_array($value) ? array_map("stripslashes_deep", $value) : stripslashes($value);
+    $value = is_array($value) ? array_map(array($this, "stripslashes_deep"), $value) : stripslashes($value);
     
     return $value;
   }

@@ -1,13 +1,14 @@
 <?php
 
-class Home {
+class Home extends Controller {
   
-  public function __construct() {
-    echo "Home controller loaded";
+  public function __construct($controller, $method) {
+    parent::__construct($controller, $method);
+    echo "Here";
   }
   
   public function index() {
-    echo "Index method";
+    //echo "Index method";
   }
   
 }

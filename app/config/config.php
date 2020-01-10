@@ -13,6 +13,6 @@ define ("PATH", "mvc-php");
 define ("WEBSITE_TITLE", "Web app");
 
 //Default states
-define ("DEFAULT_CONTROLLER", "home");
+define ("DEFAULT_CONTROLLER", "page");
 define ("DEFAULT_METHOD", "index");
 ?>

@@ -3,10 +3,13 @@
 class Page extends Controller {
   
   protected $output;
+  protected $local_method;
     
   public function __construct($controller, $method) {
     parent::__construct($controller, $method);
-           
+    
+    $this->local_method = $method;
+
     # Any models required to interact with this controller should be loaded here    
     $this->load_model("Pagemodel");    
     
@@ -14,12 +17,16 @@ class Page extends Controller {
     $this->output = new Pageview();
   }
   
-  public function index() {
-    $this->build_page("home");
+  public function home() {
+    $this->build_page($this->local_method);
   }
   
   public function about() {
-    $this->build_page("about");
+    $this->build_page($this->local_method);
+  }
+  
+  public function contact() {
+    $this->build_page($this->local_method);
   }
   
   public function not_found() {

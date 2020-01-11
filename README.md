@@ -332,7 +332,7 @@ class Controller extends Application {
     $this->view = new View();
   }
   
-  # Load model specific for this controller
+  # Load and instantiate model specific for this controller
   protected function load_model($model) {
     if (class_exists($model)) {
       $this->model[$model] = new $model();
@@ -342,13 +342,13 @@ class Controller extends Application {
     }
   }
   
-  # Implement/instantiate model methods
+  # Implement instantiated model methods
   protected function get_model($model) {
-    if (is_object($model)) {
+    if (isset($this->model[$model]) && is_object($this->model[$model])) {
       return $this->model[$model];
     }
-    else {
-      return false;
+    else {      
+      return false;      
     }
   }
   

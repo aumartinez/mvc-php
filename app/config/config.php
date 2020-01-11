@@ -17,5 +17,6 @@ define ("HTML", "common" . DS . "html");
 # Default states
 define ("DEFAULT_CONTROLLER", "page");
 define ("DEFAULT_METHOD", "index");
+define ("NOT_FOUND", "not_found");
 
 ?>

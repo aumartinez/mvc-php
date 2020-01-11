@@ -1,14 +1,16 @@
 <?php
 
 class Page extends Controller {
-  
+    
   public function __construct($controller, $method) {
     parent::__construct($controller, $method);
-    echo "Here page";
+    
+    # Any models required to interact with this controller should be loaded here    
+    $this->load_model("Pagemodel");
   }
   
   public function index() {
-    //echo "Index method";
+    $this->get_model("Pagemodel")->get_page();
   }
   
 }

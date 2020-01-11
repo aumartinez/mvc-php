@@ -18,6 +18,7 @@ class Pagemodel extends Dbmodel {
     $html = "";
     $html .= $this->get_doctype();
     $html .= $this->get_openhtml();
+    
   }
   
   protected function get_doctype($doctype = "html5") {

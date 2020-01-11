@@ -362,3 +362,50 @@ class Controller extends Application {
 ?>
 
 ```
+
+### The models
+
+A generic Model will depend on what resources the application will use to build the View. If it is a PHP application, usually it will connect to a MySQL database, then generic Model class to interact with this DB could be used as below.
+
+```php
+
+<?php
+
+class Dbmodel {
+    
+  protected $sql;
+  protected $rows = array();
+  
+  private $conx;
+  
+  # Open link to DB
+  private function open_link() {
+    $this->conx = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+  }
+  
+  # Close link to DB
+  private function close_link() {
+    $this->conx->close();
+  }
+  
+  # Submit SQL query for INSERT, UPDATE or DELETE
+  protected function run_query() {
+    $this->open_link();
+    $this->conx->query($this->sql);
+    $this->close_link();
+  }
+  
+  protected function fetch_query() {
+    $this->open_link();
+    $result = $this->conx->query($this->sql);
+    while ($this->rows[] = $result->fetch_assoc());    
+    $result->free();
+    $this->close_link();
+    array_pop($this->rows);
+  }
+  
+}
+
+?>
+
+```

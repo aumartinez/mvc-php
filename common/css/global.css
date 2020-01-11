@@ -111,6 +111,10 @@ p {
   background-color: #2e279d;
 }
 
+.bg-white {
+  background-color: #fff;
+}
+
 a.color-primary,
 .color-primary {
   color: #46b3e6;

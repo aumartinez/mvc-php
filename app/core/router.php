@@ -30,6 +30,9 @@ class Router {
     if (empty($controller)) {
       $controller = $this->default_controller;
     }
+    else if (!class_exists($controller)) {
+      $controller = $this->default_controller;
+    }
     
     if (empty($method)) {
       $method = $this->default_method;
@@ -46,7 +49,8 @@ class Router {
       call_user_func_array(array($dispatch, $method), $params);
     }
     else {
-      /* Error message */
+      # Error handler  
+      call_user_func_array(array($dispatch, $this->default_method), $params);      
     }
     
   } 

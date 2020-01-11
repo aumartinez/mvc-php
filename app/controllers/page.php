@@ -10,7 +10,13 @@ class Page extends Controller {
   }
   
   public function index() {
-    $this->get_model("Pagemodel")->get_page();
+    $this->build_page("home");
+  }
+  
+  public function build_page($page_name) {    
+    $page_src = $this->get_model("Pagemodel")->get_page($page_name);
+    $this->get_view();
+    $this->view->render($page_src);
   }
   
 }

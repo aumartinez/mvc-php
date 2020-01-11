@@ -11,12 +11,12 @@ spl_autoload_register(function ($class_name) {
   else if (file_exists(ROOT . DS . "models" . DS . strtolower($class_name) . ".php")) {
     require_once (ROOT . DS . "models" . DS . strtolower($class_name) . ".php");
   }
-  else if (file_exists(ROOT . DS . "controllers" . DS . strtolower($class_name) . ".php")) {
-    require_once (ROOT . DS . "controllers" . DS . strtolower($class_name) . ".php");
-  }
   else if (file_exists(ROOT . DS . "views" . DS . strtolower($class_name) . ".php")) {
     require_once (ROOT . DS . "views" . DS . strtolower($class_name) . ".php");
   }    
+  else if (file_exists(ROOT . DS . "controllers" . DS . strtolower($class_name) . ".php")) {
+    require_once (ROOT . DS . "controllers" . DS . strtolower($class_name) . ".php");
+  }
 });
 
 //Route request

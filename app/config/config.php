@@ -1,18 +1,21 @@
 <?php
-//Show debug messages
-define ("DEBUG", true);
 
-//Database link
+# Database link credentials
 define ("DBNAME", "webapp");
 define ("DBUSER", "root");
 define ("DBPASS", "");
 define ("DBHOST", "localhost");
 
-//Website URL and PATH
+# PATH to app
 define ("PATH", "mvc-php");
-define ("WEBSITE_TITLE", "Web app");
+define ("WEB_TITLE", "Web app");
 
-//Default states
-define ("DEFAULT_CONTROLLER", "Page");
+# PATH to media files
+define ("MEDIA", $_SERVER["SERVER_NAME"] . DS . PATH . DS. "common");
+define ("HTML", "common" . DS . "html");
+
+# Default states
+define ("DEFAULT_CONTROLLER", "page");
 define ("DEFAULT_METHOD", "index");
+
 ?>

@@ -310,7 +310,7 @@ class Application {
 
 If you are curious about what this does, mostly it is to prevent MySQL injection through user input data. Of course additional method should be added to any user input, but not as a global class/method, but upon demand on runtime, in plain English, use sanitize methods, only when you will need to clear any user input. Rule of thumb, ALWAYS sanitize any user input.
 
-Then the second thought would be to setup a generic controller handler.
+Then the second thought would be to setup a generic Controller handler.
 
 ```php
 
@@ -365,7 +365,7 @@ class Controller extends Application {
 
 ### The models
 
-A generic Model will depend on what resources the application will use to build the View. If it is a PHP application, usually it will connect to a MySQL database, then generic Model class to interact with this DB could be used as below.
+A generic Model will depend on what resources the application will use to build the View. If it is a PHP application, usually it will connect to a MySQL database, then a generic Model class to interact with this DB could be used as below.
 
 ```php
 
@@ -409,3 +409,29 @@ class Dbmodel {
 ?>
 
 ```
+
+### The View
+
+Finally, the View will "render" or fetch the DB to present data or information to the user. It will contain only the variables and methods to print the output to the user. For example if the controller and model retrieve static content from the server. The View method will just print this to the screen.
+
+```php
+
+<?php
+
+class View {
+    
+  public function __construct() {
+    
+  }
+      
+  public function render($view_name) {    
+    echo $view_name;
+  }
+  
+}
+
+?>
+
+```
+
+

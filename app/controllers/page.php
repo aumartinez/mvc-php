@@ -1,12 +1,17 @@
 <?php
 
 class Page extends Controller {
+  
+  protected $output;
     
   public function __construct($controller, $method) {
     parent::__construct($controller, $method);
     
     # Any models required to interact with this controller should be loaded here    
-    $this->load_model("Pagemodel");
+    $this->load_model("Pagemodel");    
+    
+    # Instantiate custom view output
+    $this->output = new Pageview();    
   }
   
   public function index() {
@@ -14,9 +19,10 @@ class Page extends Controller {
   }
   
   public function build_page($page_name) {    
-    $page_src = $this->get_model("Pagemodel")->get_page($page_name);
-    $this->get_view();
-    $this->view->render($page_src);
+    $page_src = $this->get_model("Pagemodel")->get_page($page_name);    
+    $html = $this->output->replace_localizations($page_src);
+    
+    $this->get_view()->render($html);
   }
   
 }

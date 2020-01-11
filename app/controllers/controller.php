@@ -36,7 +36,7 @@ class Controller extends Application {
     }
   }
   
-  # Return output view
+  # Return view instance
   protected function get_view() {
     return $this->view;
   }

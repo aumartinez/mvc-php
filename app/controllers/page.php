@@ -19,8 +19,8 @@ class Page extends Controller {
   }
   
   public function build_page($page_name) {    
-    $page_src = $this->get_model("Pagemodel")->get_page($page_name);    
-    $html = $this->output->replace_localizations($page_src);
+    $htm_src = $this->get_model("Pagemodel")->get_page($page_name);    
+    $html = $this->output->replace_localizations($htm_src);
     
     $this->get_view()->render($html);
   }

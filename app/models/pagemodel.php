@@ -8,9 +8,14 @@ class Pagemodel extends Dbmodel {
   public $page_title = "";
       
   public function get_page($page_name) {        
-    if(file_exists(HTML . DS . $page_name . ".html")){
+    $this->html_str = "";
+    $this->html_str .= $this->get_htmlhead();
+    $this->html_str .= $this->get_htmlbody($page_name);
+    $this->html_str .= $this->get_htmlclose();
+    
+    /* if(file_exists(HTML . DS . $page_name . ".html")){
       $this->html_str = file_get_contents(HTML . DS . $page_name . ".html");
-    }            
+    }  */           
     return $this->html_str;
   }
   
@@ -18,7 +23,27 @@ class Pagemodel extends Dbmodel {
     $html = "";
     $html .= $this->get_doctype();
     $html .= $this->get_openhtml();
+    $html .= $this->get_head();
     
+    return $html;
+  }
+  
+  protected function get_htmlbody($page_name) {
+    $html = "";
+    $html .= $this->get_openbody($page_name);
+    $html .= $this->get_header();
+    $html .= $this->get_bodycont($page_name);
+    $html .= $this->get_footer();
+    $html .= $this->get_scripts();
+    
+    return $html;
+  }
+  
+  protected function get_htmlclose() {
+    $html = "";
+    $html .= $this->get_closebody();
+    
+    return $html;
   }
   
   protected function get_doctype($doctype = "html5") {
@@ -73,10 +98,12 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
-  protected function get_openbody($page_name = "index") {
+  protected function get_openbody($page_name) {
     $html = "";
     $html .= " <body id=\"" . $page_name . "\">";
     $html .= "\n";
+    
+    return $html;
   }
   
   protected function get_header() {

@@ -11,7 +11,8 @@ define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
 
 # PATH to media files
-define ("MEDIA", "//" . $_SERVER["SERVER_NAME"] . ($_SERVER["SERVER_PORT"]? ":" . $_SERVER["SERVER_PORT"] : "") . "/" . PATH . "/" . "common");
+define ("SITE_ROOT", "/" . PATH);
+define ("MEDIA", SITE_ROOT . "/" . "common");
 define ("HTML", "common" . DS . "html");
 
 # Default states

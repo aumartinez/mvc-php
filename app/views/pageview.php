@@ -3,18 +3,22 @@
 class Pageview extends View {
   private $localizations = array();
   
+  public function __construct(){
+    $this->build_locales();    
+  }
+  
   public function build_locales() {
     $this->localizations = array(
       "PAGE_TITLE" => WEB_TITLE,
+      "SITE_ROOT" => SITE_ROOT,
       "MEDIA" => MEDIA,
-      "PAGE_HEADING" => "Home page title"
+      "HOME_TITLE" => "Home page title"
     );
     
     return $this->localizations;
   }
   
   public function replace_localizations($html) {
-    $this->build_locales();
     
     foreach ($this->localizations as $key => $value) {
       $html = str_replace("{\$" . $key . "\$}", $value, $html);

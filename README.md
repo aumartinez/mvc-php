@@ -425,7 +425,7 @@ class Dbmodel {
 
 ### The view
 
-Finally, the View will "render" or fetch the DB to present data or information to the user. It will contain only the variables and methods to print the output to the user. For example if the controller and model retrieve static content from the server. The View method will just print this to the screen.
+Finally, the View will "render" or fetch the DB information to the user. It will contain only the variables and methods to print the output to the user. For example if the controller and model retrieve static content from the server. The View method will just print this to the screen.
 
 ```php
 

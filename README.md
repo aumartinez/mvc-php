@@ -67,7 +67,7 @@ For each folder, a blank index.html file will help to minimize undesired indexin
 
 Our approach will have all users requests sent to a single PHP file which will then route the request to the appropriate resource. Then a sort of redirect or URL rewriting method should be used.
 
-For webservers running apache, this can be achieved with the help of an .htaccess file
+For webservers running apache, this can be achieved with the help of an .htaccess file.
 
 ```apache
 

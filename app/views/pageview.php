@@ -3,10 +3,12 @@
 class Pageview extends View {
   private $localizations = array();
   
+  # Initialize keywords dictionary
   public function __construct(){
     $this->build_locales();    
   }
   
+  # Replace keywords
   public function replace_localizations($html) {
     
     foreach ($this->localizations as $key => $value) {
@@ -16,6 +18,7 @@ class Pageview extends View {
     return $html;
   }
   
+  # Keyword list
   protected function build_locales() {
     $this->localizations = array(
       "PAGE_TITLE" => WEB_TITLE,

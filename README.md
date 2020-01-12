@@ -783,3 +783,9 @@ For example:
 
 The code keeps as "static" HTML but with PHP, the Pageview will dynamically replace those keywords.
 
+```php
+
+
+
+```
+

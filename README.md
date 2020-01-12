@@ -513,3 +513,5 @@ class Page extends Controller {
 ?>
 
 ```
+
+Look at the page controller methods, there will be one for each page view request.

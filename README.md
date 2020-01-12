@@ -210,7 +210,7 @@ class Router {
   # Initial states
   protected $default_controller = DEFAULT_CONTROLLER;
   protected $default_method = DEFAULT_METHOD;
-  protected $params = [];
+  protected $params = array();
 
   # Route handler method
   public function route($url) {

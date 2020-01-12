@@ -13,6 +13,10 @@ Usually represents the database logic, or the behind the scenes processes used t
 
 Represents the application logic and define the relationship between the model or models and the views. The controller will also route the user requests appropriately, either to the model or view accordingly.
 
+## The View
+
+The controller will submit a resource request to the model, and upon response will submit this output to the view. The view will take the provided information from the controller and build the view or output visible to the user.
+
 ## Directory structure
 
 A proposed directory structure for a given project could be as below,

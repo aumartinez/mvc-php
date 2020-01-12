@@ -831,4 +831,17 @@ Let's review the complete process one more time:
 
 - User sends HTTP request
 - Server (Apache) redirect the request to the index.php file
-- index.php file
+- index.php file captures request and loads core.php file
+- core.php loads config.php constants and the helper functions.php file
+- core.php autoload classes from applications folders, locations are:
+  - core
+  - models
+  - views
+  - controllers
+- core.php instantiate the Router class and pass the URL to it
+- Router class split URL using and converts it to an array
+- Router class defines controller and methods returned by the URL array
+- If controller could be defined then:
+  - No? Use default controller and method
+  - Yes? Instantiate proper controller class and method, if method does not exists in the class, use "not found" method
+- 

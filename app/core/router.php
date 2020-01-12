@@ -15,7 +15,7 @@ class Router {
     $url_array = explode("/", trim($url, "/"));
     
     # Remove app folder value
-    if(in_array($url_array, PATH)){
+    if(in_array(PATH, $url_array)){
       while ($url_array[0] != PATH) {
         array_shift($url_array);
       }

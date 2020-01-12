@@ -112,15 +112,14 @@ The index.php file in the "mvc-php" folder will look like the below:
 
 <?php
 
-# Use DIRECTORY_SEPARATOR for multiplatform compatibility
+# Define current directory
 define("DS", DIRECTORY_SEPARATOR);
-# Path to app folder
 define("ROOT", dirname(__FILE__) . DS . "app");
 
-# Get URL request from server
-$url = $_SERVER["REQUEST_URI"];
+# Get URL from server and Sanitize URL
+$url = filter_var($_SERVER["REQUEST_URI"], FILTER_SANITIZE_URL);
 
-# Call the request handler
+# Load core
 require_once(ROOT . DS . "core" . DS . "core.php");
 
 ?>

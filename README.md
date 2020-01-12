@@ -332,6 +332,8 @@ If you are curious about what this does, mostly it is to prevent MySQL injection
 
 Then the second thought would be to setup a generic Controller handler.
 
+### The controller.php file
+
 ```php
 
 <?php

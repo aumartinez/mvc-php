@@ -827,3 +827,8 @@ class Pageview extends View {
 
 ## Final considerations
 
+Let's review the complete process one more time:
+
+- User sends HTTP request
+- Server (Apache) redirect the request to the index.php file
+- index.php file

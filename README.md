@@ -455,4 +455,59 @@ Let's start with the below:
 
 What's cool about the MVC pattern is that you can foresee any project is scalable, but let's start with something basic.
 
-This is what follows, somebody types in an URL (request) to our site, and we will build a controller to handle it.
+This is what follows, somebody types in an URL (request) to our site, and we will build a controller to handle it. Since the final result will be a HTML page, let's call it "page" (smart no?).
+
+```php
+
+<?php
+
+class Page extends Controller {
+  
+  protected $output;
+  protected $local_method;
+    
+  public function __construct($controller, $method) {
+    parent::__construct($controller, $method);
+    
+    $this->local_method = $method;
+
+    # Any models required to interact with this controller should be loaded here    
+    $this->load_model("Pagemodel");    
+    
+    # Instantiate custom view output
+    $this->output = new Pageview();
+  }
+  
+  # Each method will request the model to present the local resource
+  public function home() {
+    $this->get_model("Pagemodel")->page_title = "Home";
+    $this->build_page($this->local_method);
+  }
+  
+  public function about() {
+    $this->get_model("Pagemodel")->page_title = "About Us";
+    $this->build_page($this->local_method);
+  }
+  
+  public function contact() {
+    $this->get_model("Pagemodel")->page_title = "Contact Us";
+    $this->build_page($this->local_method);
+  }
+  
+  public function not_found() {
+    $this->build_page("404");
+  }
+  
+  # Controller/Model/View link
+  protected function build_page($page_name) {    
+    $htm_src = $this->get_model("Pagemodel")->get_page($page_name);    
+    $html = $this->output->replace_localizations($htm_src);
+    
+    $this->get_view()->render($html);
+  }
+  
+}
+
+?>
+
+```

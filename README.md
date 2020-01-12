@@ -523,8 +523,27 @@ So, the controller get the user request to the resource, and use the model to fe
 
 Then before building the Pagemodel, lets review the scenario.
 
-1- The View will output the model result.
-2- The View are also all HTML result presented to the browser upon the user request.
-3- To present a landing page, the HTML code to build should be fetched somehow.
+1. The View will output the model result.
+2. The View are also all HTML result presented to the browser upon the user request.
+3. To present a landing page, the HTML code to build should be fetched somehow.
 
-In this example, no DB query is run, but all the HTML is stored as is, without any PHP statement on it. Thinking on efficiency, 
+In this example, no DB query is run, but all the HTML is stored as is in a server location (guess where), without any PHP statement on it. Thinking on efficiency, HTML elements that could be templated were divided into HTML chunks and the model will put them together to send these to the controller which will then submit the request to the view to print this to the screen.
+
+Not every HTML element can be templated, but a common template system could have the below:
+
+1. Top HTML meta scripts, call to CSS files and JS scripts.
+2. Top header sections 
+    - Top header section with site branding (logo) and social links
+    - Navigation items
+3. Page body content section
+4. Page footer content section
+
+Additionally, new folders will be used to store the HTML codes for each template element and content section in the HTML folder.
+
+- mvc-php
+  ...
+  - html
+    - temp
+    - page
+  
+Being "temp" the location for 

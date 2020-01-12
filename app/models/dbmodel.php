@@ -24,6 +24,7 @@ class Dbmodel {
     $this->close_link();
   }
   
+  # Submit SELECT SQL query
   protected function fetch_query() {
     $this->open_link();
     $result = $this->conx->query($this->sql);

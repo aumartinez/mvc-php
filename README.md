@@ -168,14 +168,14 @@ define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
 
 # PATH to media files
-define ("CSS", ROOT . DS . "common" . DS . "css");
-define ("IMG", ROOT . DS . "common" . DS . "img");
-define ("HTML", ROOT . DS . "common" . DS . "html");
-define ("JS", ROOT . DS . "common" . DS . "js");
+define ("SITE_ROOT", "/" . PATH);
+define ("MEDIA", SITE_ROOT . "/" . "common");
+define ("HTML", "common" . DS . "html");
 
 # Default states
-define ("DEFAULT_CONTROLLER", "home");
-define ("DEFAULT_METHOD", "index");
+define ("DEFAULT_CONTROLLER", "page");
+define ("DEFAULT_METHOD", "home");
+define ("NOT_FOUND", "not_found");
 
 ?>
 

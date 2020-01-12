@@ -744,10 +744,11 @@ and will look for the corresponding content in:
 
 ### The Pageview result
 
-In the page controller, the main View class is called but also a "Pageview" class, the main View will output the data returned by the model, and the Pageview will dynamically update a few localizations used in the HTML code to:
+In the page controller, the main View class is called but also a "Pageview" class, the main View will output the data returned by the model, and the Pageview will dynamically update a few keywords/directives used in the HTML code to:
 
 - Locate media resources and reference them correctly.
 - Add local hyperlink references (landing page, navigation).
+- Add the page title.
 
 For example:
 
@@ -778,3 +779,6 @@ For example:
   </h1>
 
 ```
+
+The code keeps "static" but with PHP, the Pageview will dynamically replace those keywords.
+

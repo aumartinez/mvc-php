@@ -836,7 +836,7 @@ Let's review the complete process one more time:
   - views
   - controllers
 - core.php instantiate the Router class and pass the URL to it
-- Router class split URL using and converts it to an array
+- Router class split URL and converts it to an array
 - Router class defines controller and methods returned by the URL array
 - If controller could be defined then:
   - No? Use default controller and method

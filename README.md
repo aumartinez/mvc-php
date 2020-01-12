@@ -446,7 +446,7 @@ class View {
 
 ## Building it all together
 
-Okay, nothing exciting happened yet. Let put the pattern to work, using a static site as an example.
+Okay, nothing exciting happened yet. Lets put the pattern to work, using a static site as an example.
 
 Let's start with the below:
 - index/landing page

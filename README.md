@@ -851,5 +851,4 @@ Let's review the complete process one more time:
 You may preview the above implementation at:
 
 
-
-So, keep calm and happy coding!
+It's all about modularization! So, keep calm and happy coding!

@@ -7,7 +7,16 @@ class Pageview extends View {
     $this->build_locales();    
   }
   
-  public function build_locales() {
+  public function replace_localizations($html) {
+    
+    foreach ($this->localizations as $key => $value) {
+      $html = str_replace("{\$" . $key . "\$}", $value, $html);
+    }
+    
+    return $html;
+  }
+  
+  protected function build_locales() {
     $this->localizations = array(
       "PAGE_TITLE" => WEB_TITLE,
       "SITE_ROOT" => SITE_ROOT,
@@ -18,15 +27,6 @@ class Pageview extends View {
     );
     
     return $this->localizations;
-  }
-  
-  public function replace_localizations($html) {
-    
-    foreach ($this->localizations as $key => $value) {
-      $html = str_replace("{\$" . $key . "\$}", $value, $html);
-    }
-    
-    return $html;
   }
   
 }

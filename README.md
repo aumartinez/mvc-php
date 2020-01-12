@@ -514,4 +514,4 @@ class Page extends Controller {
 
 ```
 
-Look at the page controller methods, there will be one for each page view request.
+Look at the page controller methods, there will be one for each page view request and if you return to the config.php file, a default state is defined for the controller with this name.

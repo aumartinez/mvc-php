@@ -280,6 +280,8 @@ Since controllers will be called upon the HTTP request and will define the relat
 
 A first action will be to create a general class that will execute some sanitize methods, as below, this will be the core controller class that will inherit a few security measures.
 
+### The general application.php file
+
 ```php
 
 <?php

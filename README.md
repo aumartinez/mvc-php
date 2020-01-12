@@ -185,7 +185,7 @@ Notice the DBNAME global, this means a database with the name "webapp" should be
 
 ### The functions.php file
 
-Errr, this one will be placed in the core folder and will be left empty for now.
+Errr, this one will be placed in the core folder and will be left empty for now. The name is self-explanatory, this file should contain any required global function.
 
 ```php
 

@@ -2,7 +2,7 @@
 
 class Application {
   
-  function __construct() {
+  public function __construct() {
     $this->sanitize_data();
     $this->unregister_globals();
   }  

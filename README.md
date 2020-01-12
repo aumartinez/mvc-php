@@ -233,7 +233,7 @@ class Router {
   # Initial states
   protected $default_controller = DEFAULT_CONTROLLER;
   protected $default_method = DEFAULT_METHOD;
-  protected $params;
+  protected $params = array();
 
   # Route handler method
   public function route($url) {
@@ -248,7 +248,7 @@ class Router {
     # If any, pass the corresponding controller, method and parameters
     $controller = isset($url_array[0]) ? array_shift($url_array) : "";
     $method = isset($url_array[0]) ? array_shift($url_array) : "";    
-    $params = isset($url_array[0]) ? array_shift($url_array) : "";
+    $params = isset($url_array[0]) ? $url_array : "";
         
     # If controller is not found or not exists as a class handler
     # set default controller and not found method

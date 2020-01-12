@@ -823,7 +823,5 @@ class Pageview extends View {
 
 ?>
 
-?>
-
 ```
 

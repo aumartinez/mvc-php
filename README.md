@@ -733,6 +733,7 @@ Hopefully the above is self-explanatory, it builds the page piece by piece, quer
 The above will look for the files:
 - temp/meta.html
 - temp/resources.html
+- temp/header.html
 - temp/footer.html
 - temp/scripts.html
 

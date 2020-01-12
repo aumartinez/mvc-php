@@ -389,6 +389,8 @@ class Controller extends Application {
 
 A generic Model will depend on what resources the application will use to build the View. If it is a PHP application, usually it will connect to a MySQL database, then a generic Model class to interact with this DB could be used as below.
 
+### The dbmodel.php file
+
 ```php
 
 <?php

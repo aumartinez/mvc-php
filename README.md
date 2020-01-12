@@ -781,5 +781,5 @@ For example:
 
 ```
 
-The code keeps "static" but with PHP, the Pageview will dynamically replace those keywords.
+The code keeps as "static" HTML but with PHP, the Pageview will dynamically replace those keywords.
 

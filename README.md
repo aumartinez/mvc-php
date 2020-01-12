@@ -232,14 +232,21 @@ class Router {
     $method = isset($url_array[0]) ? array_shift($url_array) : "";
     $params = isset($url_array[0]) ? array_shift($url_array) : "";
     
+    # If controller is not found or not exists as a class handler
+    # set default controller and not found method
     if (empty($controller)) {
       $controller = $this->default_controller;
     }
+    else if (!(class_exists($controller))) {
+      $controller = $this->default_controller;
+      $method = NOT_FOUND;      
+    }    
     
     if (empty($method)) {
       $method = $this->default_method;
     }
     
+    # Pull URL query parameters if any
     $params = $url_array;
     
     # Instantiate controller class and call to appropriate method
@@ -251,7 +258,8 @@ class Router {
       call_user_func_array(array($dispatch, $method), $params);
     }
     else {
-      /* Error message */
+      # Error handler not found method
+      call_user_func_array(array($dispatch, NOT_FOUND), $params);      
     }
     
   } 

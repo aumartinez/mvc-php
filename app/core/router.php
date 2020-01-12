@@ -41,7 +41,7 @@ class Router {
       $method = $this->default_method;
     }
     
-    # Pull get query if any
+    # Pull URL query parameters if any
     $params = $url_array;
     
     # Instantiate controller class and call to appropriate method

@@ -555,6 +555,8 @@ That said, lets get to the Pagemodel.
 
 <?php
 
+<?php
+
 class Pagemodel extends Dbmodel {
   
   private $html_str;
@@ -568,9 +570,6 @@ class Pagemodel extends Dbmodel {
     $this->html_str .= $this->get_htmlbody($page_name);
     $this->html_str .= $this->get_htmlclose();
     
-    /* if(file_exists(HTML . DS . $page_name . ".html")){
-      $this->html_str = file_get_contents(HTML . DS . $page_name . ".html");
-    }  */           
     return $this->html_str;
   }
   

@@ -759,7 +759,8 @@ For example:
   <div class="header logo">
     <a href="{$SITE_ROOT$}" title="Home"><img src="{$MEDIA$}/img/logo.png" alt="Logo" /></a>
               
-    <button id="navbar-toggle" data-toggle="active" data-target="#navbar" type="button" class="toggle-btn bg-secondary visible-xs">
+    <button id="navbar-toggle" data-toggle="active" data-target="#navbar" type="button" 
+    class="toggle-btn bg-secondary visible-xs">
       <span>+</span>
     </button>
   </div>

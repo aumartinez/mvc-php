@@ -20,7 +20,7 @@ The controller will submit a resource request to the model, and upon response wi
 
 ## Suggested conventions
 
-Some suggested conventions/practices are used in the example, class names will be uppercased and used as "class Classname", and instantiated as "new Classname()". Each class is stored in a single php with the class name as the file name and saved in the corresponding location.
+Some suggested conventions/practices are used in the example, class names will be uppercased and used as "class Classname", and instantiated as "new Classname()", class name files will lowercased though. Each class is stored in a single php script with the class name as the file name and saved in the corresponding location.
 
 ## Directory structure
 

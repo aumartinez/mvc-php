@@ -18,14 +18,17 @@ class Page extends Controller {
   }
   
   public function home() {
+    $this->get_model("Pagemodel")->page_title = "Home";
     $this->build_page($this->local_method);
   }
   
   public function about() {
+    $this->get_model("Pagemodel")->page_title = "About Us";
     $this->build_page($this->local_method);
   }
   
   public function contact() {
+    $this->get_model("Pagemodel")->page_title = "Contact Us";
     $this->build_page($this->local_method);
   }
   
@@ -33,7 +36,7 @@ class Page extends Controller {
     $this->build_page("404");
   }
   
-  public function build_page($page_name) {    
+  protected function build_page($page_name) {    
     $htm_src = $this->get_model("Pagemodel")->get_page($page_name);    
     $html = $this->output->replace_localizations($htm_src);
     

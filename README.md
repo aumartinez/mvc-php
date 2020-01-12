@@ -1,4 +1,4 @@
-# mvc-php
+# MVC and PHP
 An MVC implementation using PHP
 
 ## The MVC Pattern

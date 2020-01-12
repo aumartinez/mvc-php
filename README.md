@@ -841,4 +841,6 @@ Let's review the complete process one more time:
 - If controller could be defined then:
   - No? Use default controller and method
   - Yes? Instantiate proper controller class and method, if method does not exists in the class, use "not found" method
+- Controller implements a couple of basic sanitization methods and set initial states
+- Page controller is loaded and it also loads the Pagemodel and the Pageview classes
 - 

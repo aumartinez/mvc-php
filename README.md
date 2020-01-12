@@ -456,7 +456,7 @@ Let's start with the below:
 
 What's cool about the MVC pattern is that you can foresee any project is scalable, but let's start with something basic.
 
-### The page controller
+### The Page controller
 
 This is what follows, somebody types in an URL (request) to our site, and will build a controller to handle it. Since the final result will be a HTML page, let's call it "page" (smart no?).
 

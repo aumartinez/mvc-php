@@ -825,3 +825,5 @@ class Pageview extends View {
 
 ```
 
+## Final considerations
+

@@ -21,8 +21,6 @@ class Router {
     $controller = isset($url_array[0]) ? array_shift($url_array) : "";
     $method = isset($url_array[0]) ? array_shift($url_array) : "";    
     $params = isset($url_array[0]) ? $url_array : "";
-    
-    print_r($params);
         
     # If controller is not found or not exists as a class handler
     # set default controller and not found method

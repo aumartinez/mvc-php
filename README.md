@@ -524,7 +524,7 @@ So, the controller get the user request to the resource, and use the model to fe
 Then before building the Pagemodel, lets review the scenario.
 
 1. The View will output the model result.
-2. The View are also all HTML result presented to the browser upon the user request.
+2. The View are also all HTML results presented to the browser upon the user request.
 3. To present a landing page, the HTML code to build the view should be fetched somehow.
 
 In this example, no DB query is run, but all the HTML is stored as is in a server location (guess where), without any PHP statement on it. Thinking on efficiency, HTML elements that could be templated were divided into HTML chunks and the model will put them together to send these to the controller which will then submit the request to the view to print this to the screen.

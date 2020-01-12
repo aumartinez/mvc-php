@@ -84,7 +84,7 @@ This .htaccess file will be located in the ROOT_site > mvc-php folder.
 
 ## MVC core
 
-### The index.php file
+### The index handler
 
 The index.php file will then call for the core classes and methods that will handle the request.
 
@@ -200,7 +200,7 @@ Errr, this one will be placed in the core folder and will be left empty for now.
 
 ```
 
-### The router.php file
+### The router
 
 All HTTP requests should be routed to the corresponding controller, the URL requested by the user will be divided to define the controller and methods. For example an URL like: http://www.mysite.com/mvc-php/home/welcome, will be converted to an array like -> ["www.mysite.com", "mvc-php", "home", "welcome"].
 
@@ -280,8 +280,6 @@ Since controllers will be called upon the HTTP request and will define the relat
 
 A first action will be to create a general class that will execute some sanitize methods, as below, this will be the core controller class that will inherit a few security measures.
 
-### The general application.php file
-
 ```php
 
 <?php
@@ -331,8 +329,6 @@ class Application {
 If you are curious about what this does, mostly it is to prevent MySQL injection through user input data. Of course additional methods should be added to any user input, but not as a global class/method, but upon demand on runtime, in plain English, use sanitize methods, only when you will need to clear any user input. Rule of thumb, ALWAYS sanitize any user input.
 
 Then the second thought would be to setup a generic Controller handler.
-
-### The controller.php file
 
 ```php
 
@@ -388,8 +384,6 @@ class Controller extends Application {
 ### The models
 
 A generic Model will depend on what resources the application will use to build the View. If it is a PHP application, usually it will connect to a MySQL database, then a generic Model class to interact with this DB could be used as below.
-
-### The dbmodel.php file
 
 ```php
 

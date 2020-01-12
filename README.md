@@ -555,8 +555,6 @@ That said, lets get to the Pagemodel.
 
 <?php
 
-<?php
-
 class Pagemodel extends Dbmodel {
   
   private $html_str;

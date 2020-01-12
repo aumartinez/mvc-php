@@ -753,6 +753,28 @@ For example:
 
 ```html
 
+  ...
 
+  <div class="header logo">
+    <a href="{$SITE_ROOT$}" title="Home"><img src="{$MEDIA$}/img/logo.png" alt="Logo" /></a>
+              
+    <button id="navbar-toggle" data-toggle="active" data-target="#navbar" type="button" class="toggle-btn bg-secondary visible-xs">
+      <span>+</span>
+    </button>
+  </div>
+          
+  <nav id="navbar">
+    <ul class="nav-menu">
+      <li><a href="{$SITE_ROOT$}">Home</a></li>
+      <li><a href="{$SITE_ROOT$}/page/about">About Us</a></li>
+      <li><a href="{$SITE_ROOT$}/page/contact">Contact Us</a></li>
+    </ul>
+  </nav>
+  
+  ...
+  
+  <h1 class="color-primary">
+    {$HOME_TITLE$}
+  </h1>
 
 ```

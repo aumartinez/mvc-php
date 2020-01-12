@@ -541,7 +541,7 @@ Not every HTML element can be templated, but a common template system could have
 Additionally, new folders will be used to store the HTML codes for each template element and content section in the HTML folder.
 
 - mvc-php
-  ...
+  - ...
   - html
     - temp
     - page

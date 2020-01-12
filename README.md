@@ -518,3 +518,13 @@ class Page extends Controller {
 Look at the page controller methods, there will be one for each page view request and if you return to the config.php file, a default state is defined for the controller with this name.
 
 ### The Pagemodel model
+
+So, the controller get the user request to the resource, and use the model to fetch the resource from the server, it could be with a DB query or to look up for a predefined static element in the server.
+
+Then before building the Pagemodel, lets review the scenario.
+
+1- The View will output the model result.
+2- The View are also all HTML result presented to the browser upon the user request.
+3- To present a landing page, the HTML code to build should be fetched somehow.
+
+In this example, no DB query is run, but all the HTML is stored as is, without any PHP statement on it. Thinking on efficiency, 

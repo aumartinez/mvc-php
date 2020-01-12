@@ -6,7 +6,9 @@ class Pagemodel extends Dbmodel {
   
   public $site_title = WEB_TITLE;
   public $page_title = "";
-      
+  
+  # With page name locate resources, put them together and return it 
+  # to the controller
   public function get_page($page_name) {        
     $this->html_str = "";
     $this->html_str .= $this->get_htmlhead();
@@ -16,6 +18,7 @@ class Pagemodel extends Dbmodel {
     return $this->html_str;
   }
   
+  # Build head template
   protected function get_htmlhead() {
     $html = "";
     $html .= $this->get_doctype();
@@ -25,6 +28,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Build body content and bottom scripts
   protected function get_htmlbody($page_name) {
     $html = "";
     $html .= $this->get_openbody($page_name);
@@ -36,6 +40,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Close HTML document
   protected function get_htmlclose() {
     $html = "";
     $html .= $this->get_closebody();
@@ -43,6 +48,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Define doctype, defaults to html5
   protected function get_doctype($doctype = "html5") {
     $dtd = "";
     
@@ -54,6 +60,7 @@ class Pagemodel extends Dbmodel {
     return $dtd;
   }
   
+  # Define language, defaults to english
   protected function get_openhtml($lang = "en-us") {
     $html = "";
     
@@ -65,6 +72,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Build head section
   protected function get_head() {
     $html = "";
     $html .= " <head>\n";
@@ -95,6 +103,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Open body section, define body id with page name
   protected function get_openbody($page_name) {
     $html = "";
     $html .= " <body id=\"" . $page_name . "\">";
@@ -103,6 +112,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Build templated header (navigation, branding)
   protected function get_header() {
     $html = "";
     
@@ -114,6 +124,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Build specific content for the page
   protected function get_bodycont($page_name) {
     $html = "";
     
@@ -125,6 +136,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Build footer
   protected function get_footer() {
     $html = "";
     
@@ -136,6 +148,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Add bottom JS scripts
   protected function get_scripts() {
     $html = "";
     
@@ -147,6 +160,7 @@ class Pagemodel extends Dbmodel {
     return $html;
   }
   
+  # Close body and html
   protected function get_closebody() {
     $html = "";
     $html .= " </body>\n";

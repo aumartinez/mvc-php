@@ -542,9 +542,10 @@ Additionally, new folders will be used to store the HTML codes for each template
 
 - mvc-php
   - ...
-  - html
-    - temp
-    - page
+  - common
+    - html
+      - temp
+      - page
   
 Being "temp" the location for templated elements and "page" for each section content. This practice ensures, that all HTML keeps separated from the application logic, and any changes to it, should not break the application. Besides, front-end developers can freely work on the HTML and JS scripts without worry and back-end developers can take a deep breath knowing nothing from the core scripts is changed.
 

@@ -109,7 +109,7 @@ require_once(ROOT . DS . "core" . DS . "core.php");
 
 ### Handling the requests
 
-The index.php will call for a core handler at: SITE_root > mvc-php > core > core.php.
+The index.php will call for a core handler at: SITE_root > mvc-php > core > core.php. This core file will look like the below:
 
 ```php
 

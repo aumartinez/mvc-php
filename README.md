@@ -843,4 +843,10 @@ Let's review the complete process one more time:
   - Yes? Instantiate proper controller class and method, if method does not exists in the class, use "not found" method
 - Controller implements a couple of basic sanitization methods and set initial states
 - Page controller is loaded and it also loads the Pagemodel and the Pageview classes
-- 
+- Page controller methods are invoked by the Router
+- Page controller method submit request to the Pagemodel for the requested resource
+- Pagemodel looks in the local folder for the requested files, put them together and return the data to the controller
+- Page controller gets data and invoke View and Pageview methods to print/return the data to the initial request
+
+You may preview the above implementation at:
+

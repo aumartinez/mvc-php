@@ -340,8 +340,8 @@ class Controller extends Application {
   public function __construct($controller, $method) {
     parent::__construct();
     
-    $this->controller = $controller;
     $this->method = $method;
+    $this->controller = $controller;    
     $this->view = new View();
   }
   
@@ -365,7 +365,7 @@ class Controller extends Application {
     }
   }
   
-  # Return output view
+  # Return view instance
   protected function get_view() {
     return $this->view;
   }

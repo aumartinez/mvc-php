@@ -525,7 +525,7 @@ Then before building the Pagemodel, lets review the scenario.
 
 1. The View will output the model result.
 2. The View are also all HTML result presented to the browser upon the user request.
-3. To present a landing page, the HTML code to build should be fetched somehow.
+3. To present a landing page, the HTML code to build the view should be fetched somehow.
 
 In this example, no DB query is run, but all the HTML is stored as is in a server location (guess where), without any PHP statement on it. Thinking on efficiency, HTML elements that could be templated were divided into HTML chunks and the model will put them together to send these to the controller which will then submit the request to the view to print this to the screen.
 
@@ -546,5 +546,176 @@ Additionally, new folders will be used to store the HTML codes for each template
     - temp
     - page
   
-Being "temp" the location for templated elements and "page" for each section content.
+Being "temp" the location for templated elements and "page" for each section content. This practice ensures, that all HTML keeps separated from the application logic, and any changes to it, should not break the application. Besides, front-end developers can freely work on the HTML and JS scripts without worry and back-end developers can take a deep breath knowing nothing from the core scripts is changed.
+
+That said, let get to the Pagemodel.
+
+```php
+
+<?php
+
+class Pagemodel extends Dbmodel {
+  
+  private $html_str;
+  
+  public $site_title = WEB_TITLE;
+  public $page_title = "";
+      
+  public function get_page($page_name) {        
+    $this->html_str = "";
+    $this->html_str .= $this->get_htmlhead();
+    $this->html_str .= $this->get_htmlbody($page_name);
+    $this->html_str .= $this->get_htmlclose();
+    
+    /* if(file_exists(HTML . DS . $page_name . ".html")){
+      $this->html_str = file_get_contents(HTML . DS . $page_name . ".html");
+    }  */           
+    return $this->html_str;
+  }
+  
+  protected function get_htmlhead() {
+    $html = "";
+    $html .= $this->get_doctype();
+    $html .= $this->get_openhtml();
+    $html .= $this->get_head();
+    
+    return $html;
+  }
+  
+  protected function get_htmlbody($page_name) {
+    $html = "";
+    $html .= $this->get_openbody($page_name);
+    $html .= $this->get_header();
+    $html .= $this->get_bodycont($page_name);
+    $html .= $this->get_footer();
+    $html .= $this->get_scripts();
+    
+    return $html;
+  }
+  
+  protected function get_htmlclose() {
+    $html = "";
+    $html .= $this->get_closebody();
+    
+    return $html;
+  }
+  
+  protected function get_doctype($doctype = "html5") {
+    $dtd = "";
+    
+    if ($doctype == "html5") {
+      $dtd .= "<!doctype html>";
+      $dtd .= "\n";
+    }
+    
+    return $dtd;
+  }
+  
+  protected function get_openhtml($lang = "en-us") {
+    $html = "";
+    
+    if ($lang = "en-us") {
+      $html .= "<!html lang=\"en\">";
+      $html .= "\n";
+    }
+    
+    return $html;
+  }
+  
+  protected function get_head() {
+    $html = "";
+    $html .= " <head>\n";
+    
+    if (file_exists(HTML . DS . "temp" . DS . "meta.html")) {
+      $html .= file_get_contents(HTML . DS . "temp" . DS . "meta.html");
+      $html .= "\n";
+    }
+    
+    if ($this->page_title != "") {
+      $title = $this->page_title . " | " . $this->site_title;
+    }
+    else{
+      $title = $this->site_title;
+    }
+    
+    $html .= "  <title>" . $title . "</title>";
+    $html .= "\n";
+    
+    if (file_exists(HTML . DS . "temp" . DS . "resources.html")) {
+      $html .= file_get_contents(HTML . DS . "temp" . DS . "resources.html");
+      $html .= "\n";
+    }
+    
+    $html .= " </head>";
+    $html .= "\n";
+    
+    return $html;
+  }
+  
+  protected function get_openbody($page_name) {
+    $html = "";
+    $html .= " <body id=\"" . $page_name . "\">";
+    $html .= "\n";
+    
+    return $html;
+  }
+  
+  protected function get_header() {
+    $html = "";
+    
+    if (file_exists(HTML . DS . "temp" . DS . "header.html")) {
+      $html .= file_get_contents(HTML . DS . "temp" . DS . "header.html");
+      $html .= "\n";
+    }
+    
+    return $html;
+  }
+  
+  protected function get_bodycont($page_name) {
+    $html = "";
+    
+    if (file_exists(HTML . DS . "page" . DS . $page_name . ".html")) {
+      $html .= file_get_contents(HTML . DS . "page" . DS . $page_name . ".html");
+      $html .= "\n";
+    }
+    
+    return $html;
+  }
+  
+  protected function get_footer() {
+    $html = "";
+    
+    if (file_exists(HTML . DS . "temp" . DS . "footer.html")) {
+      $html .= file_get_contents(HTML . DS . "temp" . DS . "footer.html");
+      $html .= "\n";
+    }
+    
+    return $html;
+  }
+  
+  protected function get_scripts() {
+    $html = "";
+    
+    if (file_exists(HTML . DS . "temp" . DS . "scripts.html")) {
+      $html .= file_get_contents(HTML . DS . "temp" . DS . "scripts.html");
+      $html .= "\n";
+    }
+    
+    return $html;
+  }
+  
+  protected function get_closebody() {
+    $html = "";
+    $html .= " </body>\n";
+    $html .= "</html>";
+    $html .= "\n";
+    
+    return $html;
+  }
+  
+}
+
+?>
+
+```
 

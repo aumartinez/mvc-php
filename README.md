@@ -546,4 +546,5 @@ Additionally, new folders will be used to store the HTML codes for each template
     - temp
     - page
   
-Being "temp" the location for 
+Being "temp" the location for templated elements and "page" for each section content.
+

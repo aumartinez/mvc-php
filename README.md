@@ -1,6 +1,6 @@
 # MVC and PHP
 
-An MVC implementation using PHP
+An MVC implementation example using PHP
 
 ## The MVC Pattern
 
@@ -17,6 +17,10 @@ Represents the application logic and define the relationships between the model 
 ## The View
 
 The controller will submit a resource request to the model, and upon response will submit this output to the view. The view will take the provided information from the controller and build the view or output visible to the user.
+
+## Suggested conventions
+
+Some suggested conventions/practices are used in the example, class names will be uppercased and used as "class Classname", and instantiated as "new Classname()". Each class is stored in a single php with the class name as the file name and saved in the corresponding location.
 
 ## Directory structure
 

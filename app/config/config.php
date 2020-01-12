@@ -6,11 +6,11 @@ define ("DBUSER", "root");
 define ("DBPASS", "");
 define ("DBHOST", "localhost");
 
-# PATH to app
+# PATH to app ang app name
 define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
 
-# PATH to media files
+# PATH to media files and site root constants
 define ("SITE_ROOT", "/" . PATH);
 define ("MEDIA", SITE_ROOT . "/" . "common");
 define ("HTML", "common" . DS . "html");

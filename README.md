@@ -115,25 +115,29 @@ The index.php will call for a core handler at: SITE_root > mvc-php > core > core
 
 <?php
 
-# Database link credentials
-define ("DBNAME", "webapp");
-define ("DBUSER", "root");
-define ("DBPASS", "");
-define ("DBHOST", "localhost");
+# Load config
+require_once(ROOT . DS . "config" . DS . "config.php");
+require_once(ROOT . DS. "core" . DS . "functions.php");
 
-# PATH to app ang app name
-define ("PATH", "mvc-php");
-define ("WEB_TITLE", "Web app");
+# Autoloader
+spl_autoload_register(function ($class_name) {
+  if (file_exists(ROOT . DS . "core" . DS . strtolower($class_name) . ".php")) {
+    require_once (ROOT . DS . "core" . DS . strtolower($class_name) . ".php");
+  }
+  else if (file_exists(ROOT . DS . "models" . DS . strtolower($class_name) . ".php")) {
+    require_once (ROOT . DS . "models" . DS . strtolower($class_name) . ".php");
+  }
+  else if (file_exists(ROOT . DS . "views" . DS . strtolower($class_name) . ".php")) {
+    require_once (ROOT . DS . "views" . DS . strtolower($class_name) . ".php");
+  }    
+  else if (file_exists(ROOT . DS . "controllers" . DS . strtolower($class_name) . ".php")) {
+    require_once (ROOT . DS . "controllers" . DS . strtolower($class_name) . ".php");
+  }
+});
 
-# PATH to media files and site root constants
-define ("SITE_ROOT", "/" . PATH);
-define ("MEDIA", SITE_ROOT . "/" . "common");
-define ("HTML", "common" . DS . "html");
-
-# Default states
-define ("DEFAULT_CONTROLLER", "page");
-define ("DEFAULT_METHOD", "home");
-define ("NOT_FOUND", "not_found");
+# Route request
+$router = new Router();
+$router->route($url);
 
 ?>
 
@@ -160,11 +164,11 @@ define ("DBUSER", "root");
 define ("DBPASS", "");
 define ("DBHOST", "localhost");
 
-# PATH to app
+# PATH to app ang app name
 define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
 
-# PATH to media files
+# PATH to media files and site root constants
 define ("SITE_ROOT", "/" . PATH);
 define ("MEDIA", SITE_ROOT . "/" . "common");
 define ("HTML", "common" . DS . "html");

@@ -613,7 +613,7 @@ class Pagemodel extends Dbmodel {
     $html = "";
     
     if ($lang = "en-us") {
-      $html .= "<!html lang=\"en\">";
+      $html .= "<html lang=\"en\">";
       $html .= "\n";
     }
     

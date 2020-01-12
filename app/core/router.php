@@ -12,21 +12,16 @@ class Router {
     
     # Split url using "/" as separator
     $url_array = array();
-    $url_array = explode("/", $url);
+    $url_array = explode("/", trim($url, "/"));
     
-    # Remove domain and app folder from url
-    if (in_array(PATH, $url_array)) {
-      while($url_array[0] != PATH) {
-        array_shift($url_array);
-      }
-      array_shift($url_array);
-    }
+    # Remove app folder value
+    array_shift($url_array);
     
     # If any, pass the corresponding controller, method and parameters
-    $controller = isset($url_array[0]) ? array_shift($url_array) : "";    
-    $method = isset($url_array[0]) ? array_shift($url_array) : "";
-    $params = isset($url_array[0]) ? array_shift($url_array) : "";
-    
+    $controller = isset($url_array[0]) ? array_shift($url_array) : "";        
+    $method = isset($url_array[0]) ? array_shift($url_array) : "";    
+    isset($url_array[0]) ? array_push($this->params, $url_array[0]) : "";
+        
     # If controller is not found or not exists as a class handler
     # set default controller and not found method
     if (empty($controller)) {
@@ -34,7 +29,7 @@ class Router {
     }
     else if (!(class_exists($controller))) {
       $controller = $this->default_controller;
-      $method = NOT_FOUND;      
+      $method = NOT_FOUND;
     }    
     
     if (empty($method)) {
@@ -42,21 +37,18 @@ class Router {
     }
     
     # Pull URL query parameters if any
-    $params = $url_array;
+    $params = $url_array;    
     
     # Instantiate controller class and call to appropriate method
     $controller_name = $controller;
-    $controller = ucfirst($controller);
+    $controller = ucfirst($controller);    
     $dispatch = new $controller($controller_name, $method);
     
+    # To pass parameters to the controller, check if a given method
+    # will handle these
     if (method_exists($controller, $method)) {
       call_user_func_array(array($dispatch, $method), $params);
     }
-    else {
-      # Error handler not found method
-      call_user_func_array(array($dispatch, NOT_FOUND), $params);      
-    }
-    
   } 
 }
 

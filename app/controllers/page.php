@@ -17,6 +17,7 @@ class Page extends Controller {
     $this->output = new Pageview();
   }
   
+  # Each method will request to the model to present the local resource
   public function home() {
     $this->get_model("Pagemodel")->page_title = "Home";
     $this->build_page($this->local_method);

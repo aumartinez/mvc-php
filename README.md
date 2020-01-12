@@ -445,3 +445,14 @@ class View {
 
 ## Building it all together
 
+Okay, nothing exciting happened yet. Let put the pattern to work, using a static site as an example.
+
+Let's start with the below:
+- index/landing page
+- an about us page
+- a contact us page
+- an error/not found handler page
+
+What's cool about the MVC pattern is that you can foresee any project is scalable, but let's start with something basic.
+
+This is what follows, somebody types in an URL (request) to our site, and we will build a controller to handle it.

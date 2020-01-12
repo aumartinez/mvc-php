@@ -12,7 +12,9 @@ class Pageview extends View {
       "PAGE_TITLE" => WEB_TITLE,
       "SITE_ROOT" => SITE_ROOT,
       "MEDIA" => MEDIA,
-      "HOME_TITLE" => "Home page title"
+      "HOME_TITLE" => "Home title",
+      "ABOUT_TITLE" => "About Us title",
+      "CONTACT_TITLE" => "Contact Us title"
     );
     
     return $this->localizations;

@@ -90,6 +90,7 @@ For webservers running apache, this can be achieved with the help of an .htacces
 ```apache
 
 RewriteEngine on
+RewriteBase /mvc-php/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]

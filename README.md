@@ -49,7 +49,6 @@ For each folder, a blank index.html file will help to minimize undesired indexin
 
 ```html
 
-
 <!doctype html>
 <html>
   <head>

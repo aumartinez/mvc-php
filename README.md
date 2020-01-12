@@ -84,6 +84,8 @@ This .htaccess file will be located in the ROOT_site > mvc-php folder.
 
 ## MVC core
 
+### The index.php file
+
 The index.php file will then call for the core classes and methods that will handle the request.
 
 The index.php file in the "mvc-php" folder will look like the below:
@@ -107,7 +109,7 @@ require_once(ROOT . DS . "core" . DS . "core.php");
 
 ```
 
-### Handling the requests
+### Handling the requests, the core.php file
 
 The index.php will call for a core handler at: SITE_root > mvc-php > core > core.php. This core file will look like the below:
 

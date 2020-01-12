@@ -719,3 +719,14 @@ class Pagemodel extends Dbmodel {
 
 ```
 
+Hopefully the above is self-explanatory, it builds the page piece by piece, query the server resource and sends it back to the controller.
+
+The above will look for the files:
+- temp/meta.html
+- temp/resources.html
+- temp/footer.html
+- temp/scripts.html
+
+and will look for the corresponding content in:
+- page/pagename.html
+

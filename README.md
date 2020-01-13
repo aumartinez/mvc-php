@@ -184,7 +184,7 @@ define ("DBUSER", "root");
 define ("DBPASS", "");
 define ("DBHOST", "localhost");
 
-# PATH to app ang app name
+# PATH to app and app name
 define ("PATH", "mvc-php");
 define ("WEB_TITLE", "Web app");
 

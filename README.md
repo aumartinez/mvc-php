@@ -99,7 +99,7 @@ RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
 
 ```
 
-This .htaccess file will be located in the ROOT_site > mvc-php folder.
+This .htaccess file will be located in the ROOT_site folder.
 
 ## MVC core
 

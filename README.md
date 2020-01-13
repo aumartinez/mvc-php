@@ -28,11 +28,11 @@ Class names will have the initial letter uppercased and used as "class Classname
 
 ### Constant names
 
-Constant names are all upercased, example: MY_CONSTANT.
+Constant names are all uppercased, example: MY_CONSTANT.
 
 ### Function and variables names
 
-Function and variable names are lowercased and can follow if desired an "camel case" format, or separated by a valid character like "_".
+Function and variable names are lowercased and can follow if desired a "camel case" format, or separated by a valid character like "_".
 
 Name examples: $myMethod or $my_method, $myVariable or $my_variable.
 
@@ -43,7 +43,7 @@ A proposed directory structure for a given project could be as below,
 ROOT sub-folder (mvc-php) for this example:
 
 - mvc-php
-  - app
+  - app 
     - config
     - controllers
     - core

@@ -270,6 +270,9 @@ class Router {
       $method = $this->default_method;
     }
     
+    # Pull URL query parameters if any
+    $params = $url_array;
+    
     # Instantiate controller class and call to appropriate method
     $controller_name = $controller;
     $controller = ucfirst($controller);

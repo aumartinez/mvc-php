@@ -852,7 +852,7 @@ Let's review the complete process one more time:
 - Server (Apache) redirects the request to the index.php file, .htaccess redirect directive should be placed in root directory.
 - index.php file captures request and loads core.php file
 - core.php loads config.php constants and the helper functions.php file
-- core.php autoload classes from applications folders, locations are:
+- core.php autoload classes from application folders, locations are:
   - core
   - models
   - views

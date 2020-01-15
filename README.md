@@ -66,7 +66,6 @@ Notice, you may change "mvc-php" for something more fancy like "framework" or re
 For each folder, a blank index.html file will help to minimize undesired indexing access to them.
 
 ```html
-
 <!doctype html>
 <html>
   <head>
@@ -78,7 +77,6 @@ For each folder, a blank index.html file will help to minimize undesired indexin
     </h1>
   </body>
 </html>
-
 ```
 
 ### URL redirecting
@@ -88,14 +86,12 @@ Our approach will have all users requests sent to a single PHP file which will t
 For webservers running apache, this can be achieved with the help of an .htaccess file.
 
 ```apache
-
 RewriteEngine on
 RewriteBase /mvc-php/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
 
 ### "mvc-php" can be either removed or replaced by a folder name of your choice
-
 ```
 
 This .htaccess file will be located in the ROOT_site folder.
@@ -109,7 +105,6 @@ The index.php file will then call for the core classes and methods that will han
 The index.php file in the "mvc-php" folder will look like the below:
 
 ```php
-
 <?php
 
 # Define current directory
@@ -123,7 +118,6 @@ $url = filter_var($_SERVER["REQUEST_URI"], FILTER_SANITIZE_URL);
 require_once(ROOT . DS . "core" . DS . "core.php");
 
 ?>
-
 ```
 
 ### Handling the requests, the core.php file
@@ -131,7 +125,6 @@ require_once(ROOT . DS . "core" . DS . "core.php");
 The index.php will call for a core handler at: SITE_root > mvc-php > core > core.php. This core file will look like the below:
 
 ```php
-
 <?php
 
 # Load config
@@ -159,7 +152,6 @@ $router = new Router();
 $router->route($url);
 
 ?>
-
 ```
 
 What does this script do?  
@@ -174,7 +166,6 @@ What does this script do?
 This file will be located in the config folder and will contain all the global constants and any database credentials that will be used throughout the application.
 
 ```php
-
 <?php
 
 # Database link credentials
@@ -198,7 +189,6 @@ define ("DEFAULT_METHOD", "home");
 define ("NOT_FOUND", "not_found");
 
 ?>
-
 ```
 
 Notice the DBNAME global, this means a database with the name "webapp" should be setup prior to try running a db query.
@@ -208,13 +198,11 @@ Notice the DBNAME global, this means a database with the name "webapp" should be
 Errr, this one will be placed in the core folder and will be left empty for now. The name is self-explanatory, this file should contain any required global function.
 
 ```php
-
 <?php
 
 # Helper functions here
 
 ?>
-
 ```
 
 ### The router
@@ -224,7 +212,6 @@ All HTTP requests should be routed to the corresponding controller, the URL requ
 In the proposed framework logic, the first 2 ones will be skipped/ignored and will extract only "home" and "welcome", this means the router will call for a controller named "home" that will execute a method named "welcome".
 
 ```php
-
 <?php
 
 class Router {
@@ -253,7 +240,9 @@ class Router {
     # If any, pass the corresponding controller, method and parameters
     $controller = isset($url_array[0]) ? array_shift($url_array) : "";    
     $method = isset($url_array[0]) ? array_shift($url_array) : "";
-    $params = isset($url_array[0]) ? $url_array : "";
+    
+    # Pull URL query parameters if any
+    $this->params = $url_array;
     
     # If controller is not found or not exists as a class handler
     # set default controller and not found method
@@ -269,27 +258,23 @@ class Router {
       $method = $this->default_method;
     }
     
-    # Pull URL query parameters if any
-    $params = $url_array;
-    
     # Instantiate controller class and call to appropriate method
     $controller_name = $controller;
     $controller = ucfirst($controller);
     $dispatch = new $controller($controller_name, $method);
     
     if (method_exists($controller, $method)) {
-      call_user_func_array(array($dispatch, $method), $params);
+      call_user_func_array(array($dispatch, $method), $this->params);
     }
     else {
       # Error handler not found method
-      call_user_func_array(array($dispatch, NOT_FOUND), $params);      
+      call_user_func_array(array($dispatch, NOT_FOUND), $this->params);      
     }
     
   } 
 }
 
 ?>
-
 ```
 
 ### The controllers
@@ -299,7 +284,6 @@ Since controllers will be called upon the HTTP request and will define the relat
 A first action will be to create a general class that will execute some sanitize methods, as below, this will be the core controller class that will inherit a few security measures.
 
 ```php
-
 <?php
 
 class Application {
@@ -341,7 +325,6 @@ class Application {
 }
 
 ?>
-
 ```
 
 If you are curious about what this does, mostly it is to prevent MySQL injection through user input data. Of course additional methods should be added to sanitize any user input, but not as a global class/method, but upon demand on runtime, in plain English, use sanitize methods, only when you will need to clear any user input. Rule of thumb, ALWAYS sanitize any user input.
@@ -349,7 +332,6 @@ If you are curious about what this does, mostly it is to prevent MySQL injection
 Then the second thought would be to setup a generic Controller handler.
 
 ```php
-
 <?php
 
 # Implement sanitize methods first
@@ -396,7 +378,6 @@ class Controller extends Application {
 }
 
 ?>
-
 ```
 
 ### The models
@@ -404,7 +385,6 @@ class Controller extends Application {
 A generic Model will depend on what resources the application will use to build the View. If it is a PHP application, usually it will connect to a MySQL database, then a generic Model class to interact with this DB could be used as below.
 
 ```php
-
 <?php
 
 class Dbmodel {
@@ -444,7 +424,6 @@ class Dbmodel {
 }
 
 ?>
-
 ```
 
 ### The view
@@ -452,7 +431,6 @@ class Dbmodel {
 Finally, the View will "render" or fetch the DB information to the user. It will contain only the variables and methods to print the output to the user. For example if the controller and model retrieve static content from the server. The View method will just print this to the screen.
 
 ```php
-
 <?php
 
 class View {
@@ -464,7 +442,6 @@ class View {
 }
 
 ?>
-
 ```
 
 ## Building it all together
@@ -484,7 +461,6 @@ What's cool about the MVC pattern is that you can foresee any project is scalabl
 This is what follows, somebody types in an URL (request) to our site, and will build a controller to handle it. Since the final result will be a HTML page, let's call it "page" (smart no?).
 
 ```php
-
 <?php
 
 class Page extends Controller {
@@ -532,7 +508,6 @@ class Page extends Controller {
 }
 
 ?>
-
 ```
 
 Look at the page controller methods, there will be one for each page view request and if you return to the config.php file, a default state is defined for the controller with this name.
@@ -572,7 +547,6 @@ Being "temp" the location for templated elements and "page" for each section con
 That said, lets get to the Pagemodel.
 
 ```php
-
 <?php
 
 class Pagemodel extends Dbmodel {
@@ -748,7 +722,6 @@ class Pagemodel extends Dbmodel {
 }
 
 ?>
-
 ```
 
 Hopefully the above is self-explanatory, it builds the page piece by piece, query the server resource and sends it back to the controller.
@@ -774,7 +747,6 @@ In the page controller, the main View class is called but also a "Pageview" clas
 For example:
 
 ```html
-
   ...
 
   <div class="header logo">
@@ -799,13 +771,11 @@ For example:
   <h1 class="color-primary">
     {$HOME_TITLE$}
   </h1>
-
 ```
 
 The code keeps as "static" HTML but with PHP, the Pageview will dynamically replace those keywords. To avoid any conflict or undesired side effect, keywords are used between  specific character delimiters "{$KEYWORD$}".
 
 ```php
-
 <?php
 
 class Pageview extends View {
@@ -843,7 +813,6 @@ class Pageview extends View {
 }
 
 ?>
-
 ```
 
 ## Final considerations

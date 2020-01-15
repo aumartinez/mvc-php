@@ -738,7 +738,7 @@ and will look for the corresponding content in:
 
 ### The Pageview result
 
-In the page controller, the main View class is called but also a "Pageview" class, the main View will output the data returned by the model, and the Pageview will dynamically update a few keywords/directives used in the HTML code to:
+In the page controller, the main View class is called but also a "Pageview" class is created, the main View will output the data returned by the model, and the Pageview will dynamically update a few keywords/directives used in the HTML code to:
 
 - Locate media resources and reference them correctly.
 - Add local hyperlink references (landing page, navigation).

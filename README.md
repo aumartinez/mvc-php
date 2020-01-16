@@ -83,7 +83,7 @@ For each folder, a blank index.html file will help to minimize undesired indexin
 
 Our approach will have all users requests sent to a single PHP file which will then route the request to the appropriate resource. Then a sort of redirect or URL rewriting method should be used.
 
-For webservers running apache, this can be achieved with the help of an .htaccess file.
+For webservers running apache, this can be achieved with the help of an .htaccess file located in the "framework" (mvc-php) folder.
 
 ```apache
 RewriteEngine on
@@ -91,7 +91,15 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 
-This .htaccess file will be located in the "framework" (mvc-php) folder.
+Another .htaccess file placed in the "app" folder, will also ensure that request trying to load any of the application core files will be routed to the parent index handler.
+
+```apache
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} f [OR]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^mvc-php(.*)$ /mvc-php/index.php [L,QSA]
+```
 
 ## MVC core
 

@@ -1,6 +1,6 @@
 # MVC and PHP
 
-An MVC implementation example using PHP
+A MVC implementation example using PHP
 
 ## The MVC Pattern
 

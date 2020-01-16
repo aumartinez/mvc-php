@@ -99,7 +99,7 @@ RewriteEngine on
 RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 
-Now create an index.php file in the app folder to route undesired access request to the framework folder handler.
+Now create an index.php file in the app folder to route undesired access requests to the framework folder handler.
 
 ```php
 <?php

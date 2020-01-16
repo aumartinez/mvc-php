@@ -1,5 +1,2 @@
 RewriteEngine on
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} f [OR]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^mvc-php(.*)$ /mvc-php/index.php [L,QSA]
+RewriteRule ^(.*)$ index.php [L,QSA]

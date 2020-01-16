@@ -91,7 +91,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 
-Another .htaccess file placed in the "app" folder, will also ensure that request trying to load any of the application core files will be routed to the parent index handler.
+Another .htaccess file placed in the "app" folder, will also ensure that any request trying to load any of the application core files will be routed to the parent index handler.
 
 ```apache
 RewriteEngine on

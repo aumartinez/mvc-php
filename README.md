@@ -87,19 +87,29 @@ For webservers running apache, this can be achieved with the help of an .htacces
 
 ```apache
 RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} f [OR]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 
-Another .htaccess file placed in the "app" folder, will also ensure that any request trying to load any of the application core files will be routed to the parent index handler.
+Another .htaccess file placed in the "app" folder, will also ensure that any request trying to load any of the application core files will be routed to a local index handler to prevent access to them.
 
 ```apache
 RewriteEngine on
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} f [OR]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^mvc-php(.*)$ /mvc-php/index.php [L,QSA]
+RewriteRule ^(.*)$ index.php [L,QSA]
 ```
+
+Now create an index.php file in the app folder to route undesired access request to the framework folder handler.
+
+```php
+<?php
+
+header("Location: ../");
+exit("Forbidden action");
+
+?>
+```
+That should do it and we are ready to start setting up the application.
 
 ## MVC core
 

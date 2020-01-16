@@ -87,14 +87,12 @@ For webservers running apache, this can be achieved with the help of an .htacces
 
 ```apache
 RewriteEngine on
-RewriteBase /mvc-php/
+RewriteCond %{REQUEST_FILENAME}  -f [OR]
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ /mvc-php/index.php [L,QSA]
-
-### "mvc-php" can be either removed or replaced by a folder name of your choice
+RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 
-This .htaccess file will be located in the ROOT_site folder.
+This .htaccess file will be located in the "framework" (mvc-php) folder.
 
 ## MVC core
 

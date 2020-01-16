@@ -87,7 +87,6 @@ For webservers running apache, this can be achieved with the help of an .htacces
 
 ```apache
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME}  -f [OR]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L,QSA]
 ```

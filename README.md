@@ -1,6 +1,6 @@
 # MVC and PHP
 
-An MVC implementation example using PHP
+A MVC implementation example using PHP
 
 ## The MVC Pattern
 
@@ -83,16 +83,32 @@ For each folder, a blank index.html file will help to minimize undesired indexin
 
 Our approach will have all users requests sent to a single PHP file which will then route the request to the appropriate resource. Then a sort of redirect or URL rewriting method should be used.
 
-For webservers running apache, this can be achieved with the help of an .htaccess file.
+For webservers running apache, this can be achieved with the help of an .htaccess file located in the "framework" (mvc-php) folder.
 
 ```apache
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME}  -f [OR]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 
-This .htaccess file will be located in the "framework" (mvc-php) folder.
+Another .htaccess file placed in the "app" folder, will also ensure that any request trying to load any of the application core files will be routed to a local index handler to prevent access to them.
+
+```apache
+RewriteEngine on
+RewriteRule ^(.*)$ index.php [L,QSA]
+```
+
+Now create an index.php file in the app folder to route undesired access requests to the framework folder handler.
+
+```php
+<?php
+
+header("Location: ../");
+exit("Forbidden action");
+
+?>
+```
+That should do it and we are ready to start setting up the application.
 
 ## MVC core
 
@@ -818,7 +834,7 @@ class Pageview extends View {
 Let's review the complete process one more time:
 
 - User sends HTTP request
-- Server (Apache) redirects the request to the index.php file, .htaccess redirect directive should be placed in root directory.
+- Server (Apache) redirects the request to the index.php file, .htaccess redirect directive should be placed in framework root directory.
 - index.php file captures request and loads core.php file
 - core.php loads config.php constants and the helper functions.php file
 - core.php autoload classes from application folders, locations are:

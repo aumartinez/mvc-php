@@ -558,7 +558,7 @@ Additionally, new folders will be used to store the HTML codes for each template
   
 Being "temp" the location for templated elements and "page" for each section content. This practice ensures, that all HTML keeps separated from the application logic, and any changes to it, should not break the application. Besides, front-end developers can freely work on the HTML and JS scripts without worry and back-end developers can take a deep breath knowing nothing from the core scripts is changed.
 
-To prevent undesired access to your HTML files and folders, a new directive in a .htaccess file can be used for Apache like below.
+To prevent undesired access to your HTML files and folders, a new directive in a .htaccess file can be used for Apache like the below.
 
 ```apache
 RewriteEngine on
@@ -567,7 +567,16 @@ RewriteCond %{REQUEST_URI} !\.(?:eot|ttf|woff|woff2)$ [NC]
 RewriteRule ^ index.php [L,QSA]
 ```
 
-This allows access to necessary files like JS scripts, CSS stylesheets, images and fonts.
+This allows access to necessary files like JS scripts, CSS stylesheets, images and fonts, undesired requests are routed to an index file which will also route the request to the landing page.
+
+```php
+<?php
+
+header("Location: ../");
+exit("Forbidden action");
+
+?>
+```
 
 Now, lets get to the Pagemodel.
 

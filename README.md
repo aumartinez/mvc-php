@@ -220,6 +220,11 @@ function is_controller($str) {
     return false;
   }
 }
+
+# To use with URLs like https://mysite.com/my-controller/some-method
+function snake_case($str) {
+  return str_replace("-", "_", $str);
+}
 ```
 
 Added a function to avoid load of any model class, only controllers classes should be loaded through and http request.

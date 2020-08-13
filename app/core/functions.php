@@ -11,4 +11,8 @@ function is_controller($str) {
   }
 }
 
+function snake_case($str) {
+  return str_replace("-", "_", $str);
+}
+
 ?>

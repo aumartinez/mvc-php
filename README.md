@@ -212,6 +212,7 @@ Notice the DBNAME global, this means a database with the name "webapp" should be
 Errr, this one will be placed in the core folder and will be left empty for now. The name is self-explanatory, this file should contain any required global function.
 
 ```php
+<?php
 function is_controller($str) {
   if (file_exists(ROOT . DS . "controllers" . DS . strtolower($str) . ".php")){
     return true;
@@ -225,6 +226,7 @@ function is_controller($str) {
 function snake_case($str) {
   return str_replace("-", "_", $str);
 }
+?>
 ```
 
 Added a function to avoid load of any model class, only controllers classes should be loaded through and http request.

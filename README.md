@@ -965,6 +965,22 @@ class Pageview extends View {
     return $html;
   }
   
+   # Add locales - single value
+  public function add_locale($key, $value) {
+    $this->locales[$key] = $value;
+    
+    return $this->locales;
+  }
+  
+  # Add locales - array of values
+  public function add_localearray($arr) {
+    foreach ($arr as $key => $value) {
+      $this->locales[$key] = $value;
+    }
+    
+    return $this->locales;
+  }
+  
   # Keyword list
   protected function build_locales() {
     $this->localizations = array(

@@ -24,7 +24,7 @@ Some suggested conventions/practices are used in the example.
 
 ### Class names
 
-Class names will have the initial letter uppercased and used as "class Classname", and instantiated as "new Classname()", class name files will lowercased though. Each class is stored in a single php script with the class name as the file name and saved in the corresponding location.
+Class names will have the initial letter uppercased and used as "class Classname", and instantiated as "new Classname()", class name files will be lowercased though. Each class is stored in a single php script with the class name as the file name and saved in the corresponding location.
 
 ### Constant names
 
